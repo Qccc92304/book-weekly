@@ -66,6 +66,16 @@ tbody tr:last-child td{border-bottom:none}
 .mtag{font-size:11px;color:#9aa1ab;margin-left:5px}
 .mon-note{font-size:11.5px;color:#a8aeb8;margin-top:12px;line-height:1.7}
 
+/* ---- 按月趋势·分品切换 ---- */
+.mtabs{position:relative}
+.mtabs input{position:absolute;opacity:0;pointer-events:none}
+.mtabs label{display:inline-block;font-size:12.5px;color:#6b7280;cursor:pointer;
+ padding:4px 12px;margin:0 6px 12px 0;border:1px solid #e5e7eb;border-radius:999px;
+ background:#fff;user-select:none}
+.mtabs input:checked+label{color:#fff;background:#4b5563;border-color:#4b5563}
+.pane{display:none}
+.pane.pall{display:block}
+
 footer{font-size:11.5px;color:#a8aeb8;text-align:center;margin-top:26px;line-height:1.8}
 
 @media print{
@@ -116,14 +126,7 @@ footer{font-size:11.5px;color:#a8aeb8;text-align:center;margin-top:26px;line-hei
   </div>
 </div></div>
 
-<div class="sec-t">按月趋势</div>
-<div class="mon">
-<table>
-<thead><tr><th>月份</th><th>加微</th><th>领课</th><th>领课率</th><th>转正</th></tr></thead>
-<tbody><tr><td>2026年5月及以前</td><td><b>13</b><div class="mbar" style="width:0.3%"></div></td><td>9</td><td class="dim">—</td><td class="zz">0</td></tr><tr><td>2026年6月</td><td><b>359</b><div class="mbar" style="width:9.3%"></div></td><td>16</td><td class="dim">4.5%</td><td class="zz">1</td></tr><tr><td>2026年7月</td><td><b>3,867</b><div class="mbar" style="width:100.0%"></div></td><td>109</td><td class="dim">2.8%</td><td class="zz">1</td></tr><tr><td>2026年8月</td><td><b>1,215</b><div class="mbar" style="width:31.4%"></div></td><td>61</td><td class="dim">5.0%</td><td class="zz">4</td></tr><tr><td>2026年9月 <span class="mtag">至9/14</span></td><td><b>312</b><div class="mbar" style="width:8.1%"></div></td><td>32</td><td class="dim">10.3%</td><td class="zz">0</td></tr></tbody>
-</table>
-<div class="mon-note">转正按用户领课月份归属；最近一个月尚未走完转化周期，数字会继续增长。</div>
-</div>
+<div class="sec-t">按月趋势</div><div class="mon"><div class="mtabs"><div class="pane pall"><table><thead><tr><th>月份</th><th>加微</th><th>领课</th><th>领课率</th><th>转正</th></tr></thead><tbody><tr><td>2026年5月及以前</td><td><b>13</b><div class="mbar" style="width:0.3%"></div></td><td>9</td><td class="dim">—</td><td class="zz">0</td></tr><tr><td>2026年6月</td><td><b>359</b><div class="mbar" style="width:9.3%"></div></td><td>16</td><td class="dim">4.5%</td><td class="zz">1</td></tr><tr><td>2026年7月</td><td><b>3,867</b><div class="mbar" style="width:100.0%"></div></td><td>109</td><td class="dim">2.8%</td><td class="zz">1</td></tr><tr><td>2026年8月</td><td><b>1,215</b><div class="mbar" style="width:31.4%"></div></td><td>61</td><td class="dim">5.0%</td><td class="zz">4</td></tr><tr><td>2026年9月 <span class="mtag">至9/14</span></td><td><b>312</b><div class="mbar" style="width:8.1%"></div></td><td>32</td><td class="dim">10.3%</td><td class="zz">0</td></tr></tbody></table></div></div><div class="mon-note">转正按用户领课月份归属；最近一个月尚未走完转化周期，数字会继续增长。</div></div>
 
-<footer>生成时间 2026-09-15 18:07</footer>
+<footer>生成时间 2026-09-15 18:33</footer>
 </div></body></html>
