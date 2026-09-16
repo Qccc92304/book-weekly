@@ -23,10 +23,9 @@ button:hover{background:#3b4453}
 .tip{font-size:11.5px;color:#b3b9c2;margin-top:26px;line-height:1.7}
 #box{display:none}
 #box .wrap{max-width:1620px;margin:0 auto;text-align:left}
-.bar{position:fixed;top:0;left:0;right:0;height:38px;background:#fff;
- border-bottom:1px solid #eef0f3;display:flex;align-items:center;
- justify-content:flex-end;padding:0 16px;z-index:9}
-.bar a{font-size:12px;color:#8b909a;cursor:pointer;text-decoration:none}
+/* 不再有固定的顶部横条：它 position:fixed 悬浮在内容之上，
+   而页面 body 只留了 24px 上边距，38px 的横条就会压住标题。
+   合作方打开的是带码的专属链接，本来也不需要「退出」按钮。 */
 </style></head>
 <body>
 <div class="gate" id="gate">
@@ -40,7 +39,6 @@ button:hover{background:#3b4453}
   <div class="tip">访问码由对接人提供，如有疑问请联系您的商务对接人。</div>
 </div>
 <div id="box">
-  <div class="bar"><a onclick="logout()">退出</a></div>
   <div class="wrap" id="wrap"></div>
 </div>
 <script>
@@ -92,10 +90,12 @@ async function go(c, fromUrl) {
   }
   render(await r.text());
 }
-function logout() {
+/* 若以后要在页面上放「切换身份」入口，调用 reset() 即可：
+   清掉 localStorage 里记住的访问码，回到输入码页面。 */
+window.reset = function () {
   try { localStorage.removeItem('bc'); } catch (x) {}
   location.href = location.pathname;
-}
+};
 (function () {
   var q = new URLSearchParams(location.search).get('c');
   if (q) { go(q.toUpperCase(), true); return; }   /* 专属链接：点开直接进 */
