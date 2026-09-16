@@ -65,7 +65,7 @@ function render(txt) {
   if (t) document.title = t.textContent;
   window.scrollTo(0, 0);
 }
-async function go(c) {
+async function go(c, fromUrl) {
   c = (c || document.getElementById('code').value).trim();
   if (!c) return;
   var e = document.getElementById('err');
@@ -76,7 +76,11 @@ async function go(c) {
     if (e) e.textContent = '链接无效或已失效，请联系您的商务对接人';
     return;
   }
-  try { localStorage.setItem('bc', c); } catch (x) {}
+  /* 只有「手输」的码才长期记住；?c= 链接本身就是身份，不必写进 localStorage，
+     否则点进某个渠道会把之前的总览身份覆盖掉 */
+  if (!fromUrl) {
+    try { localStorage.setItem('bc', c); } catch (x) {}
+  }
   render(await r.text());
 }
 function logout() {
@@ -85,7 +89,7 @@ function logout() {
 }
 (function () {
   var q = new URLSearchParams(location.search).get('c');
-  if (q) { go(q.toUpperCase()); return; }   /* 专属链接：点开直接进 */
+  if (q) { go(q.toUpperCase(), true); return; }   /* 专属链接：点开直接进 */
   var c = null;
   try { c = localStorage.getItem('bc'); } catch (x) {}
   if (c) go(c);                              /* 裸链接：上次输过则自动进 */
