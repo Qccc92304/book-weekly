@@ -1,26 +1,94 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>图书私域合作数据</title>
+<title>数据看板</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;padding:38px 20px 56px;background:#fff;
- font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#1f2328}
-.wrap{max-width:1000px;margin:0 auto}
-h1{font-size:21px;font-weight:600;margin:0 0 5px}
-.meta{font-size:12.5px;color:#8b909a;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:14px}
-a{display:block;background:#fff;border:1px solid #e5e7eb;border-radius:12px;
- padding:17px 19px;text-decoration:none;color:inherit}
-a:hover{border-color:#9aa3af}
-.n{font-size:15px;font-weight:600;margin-bottom:10px}
-.s{font-size:12.5px;color:#6b7280;line-height:2}
-.s b{font-weight:600;color:#111827;font-variant-numeric:tabular-nums}
-.s i{font-style:normal;opacity:.65;margin-right:5px}
-footer{font-size:11.5px;color:#a8aeb8;text-align:center;margin-top:30px}
-</style></head><body><div class="wrap">
-<h1>图书私域合作数据</h1>
-<div class="meta">数据截止 2026-09-14　｜　本周 09/07–09/13</div>
-<div class="grid"><a href="阳光同学.html"><div class="n">阳光同学</div><div class="s"><i>本周加微</i><b>55,473</b><br><i>本周领课</i><b>894</b><br><i>累计加微</i><b>271,056</b><br><i>累计领课</i><b>5,594</b>　<i>转正</i><b>87</b></div></a><a href="书行.html"><div class="n">书行</div><div class="s"><i>本周加微</i><b>484</b><br><i>本周领课</i><b>58</b><br><i>累计加微</i><b>25,380</b><br><i>累计领课</i><b>5,992</b>　<i>转正</i><b>26</b></div></a><a href="笨笨熊(下册).html"><div class="n">笨笨熊(下册)</div><div class="s"><i>本周加微</i><b>243</b><br><i>本周领课</i><b>10</b><br><i>累计加微</i><b>57,191</b><br><i>累计领课</i><b>6,553</b>　<i>转正</i><b>49</b></div></a><a href="笨笨熊(上册).html"><div class="n">笨笨熊(上册)</div><div class="s"><i>本周加微</i><b>159</b><br><i>本周领课</i><b>16</b><br><i>累计加微</i><b>5,766</b><br><i>累计领课</i><b>227</b>　<i>转正</i><b>6</b></div></a><a href="汉知简.html"><div class="n">汉知简</div><div class="s"><i>本周加微</i><b>14</b><br><i>本周领课</i><b>5</b><br><i>累计加微</i><b>29,698</b><br><i>累计领课</i><b>3,654</b>　<i>转正</i><b>34</b></div></a><a href="小晨同学.html"><div class="n">小晨同学</div><div class="s"><i>本周加微</i><b>402</b><br><i>本周领课</i><b>39</b><br><i>累计加微</i><b>14,443</b><br><i>累计领课</i><b>1,107</b>　<i>转正</i><b>21</b></div></a><a href="当当网.html"><div class="n">当当网</div><div class="s"><i>本周加微</i><b>548</b><br><i>本周领课</i><b>312</b><br><i>累计加微</i><b>4,268</b><br><i>累计领课</i><b>2,762</b>　<i>转正</i><b>12</b></div></a></div>
-<footer>生成时间 2026-09-15 18:38</footer>
-</div></body></html>
+body{margin:0;min-height:100vh;background:#fff;color:#1f2430;
+ font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+ display:flex;align-items:center;justify-content:center;padding:40px 20px}
+.gate{width:100%;max-width:360px;text-align:center}
+.logo{width:40px;height:40px;border-radius:10px;background:#4b5563;color:#fff;
+ font-size:17px;line-height:40px;margin:0 auto 18px}
+h1{font-size:17px;font-weight:600;margin:0 0 6px}
+p{font-size:12.5px;color:#8b909a;margin:0 0 22px}
+input{width:100%;padding:11px 14px;font-size:14px;letter-spacing:1px;
+ border:1px solid #dfe3e8;border-radius:9px;outline:none;text-align:center;
+ font-family:inherit;text-transform:uppercase}
+input:focus{border-color:#4b5563}
+button{width:100%;margin-top:11px;padding:11px;font-size:14px;color:#fff;
+ background:#4b5563;border:0;border-radius:9px;cursor:pointer;font-family:inherit}
+button:hover{background:#3b4453}
+.err{color:#c0392b;font-size:12.5px;margin-top:12px;min-height:18px}
+.tip{font-size:11.5px;color:#b3b9c2;margin-top:26px;line-height:1.7}
+#box{display:none}
+#box .wrap{max-width:1180px;margin:0 auto;text-align:left}
+.bar{position:fixed;top:0;left:0;right:0;height:38px;background:#fff;
+ border-bottom:1px solid #eef0f3;display:flex;align-items:center;
+ justify-content:flex-end;padding:0 16px;z-index:9}
+.bar a{font-size:12px;color:#8b909a;cursor:pointer;text-decoration:none}
+</style></head>
+<body>
+<div class="gate" id="gate">
+  <div class="logo">数</div>
+  <h1>合作数据看板</h1>
+  <p>请输入渠道访问码</p>
+  <input id="code" placeholder="访问码" autocomplete="off"
+         onkeydown="if(event.key==='Enter')go()">
+  <button onclick="go()">进入看板</button>
+  <div class="err" id="err"></div>
+  <div class="tip">访问码由对接人提供，如有疑问请联系您的商务对接人。</div>
+</div>
+<div id="box">
+  <div class="bar"><a onclick="logout()">退出</a></div>
+  <div class="wrap" id="wrap"></div>
+</div>
+<script>
+var SALT = "568fd7d64a747858";
+async function sha(s) {
+  var b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(SALT + s));
+  return Array.from(new Uint8Array(b)).map(function (x) {
+    return x.toString(16).padStart(2, '0');
+  }).join('').slice(0, 16);
+}
+function render(txt) {
+  var d = new DOMParser().parseFromString(txt, 'text/html');
+  document.getElementById('gate').style.display = 'none';
+  var box = document.getElementById('box');
+  box.style.display = 'block';
+  var st = document.createElement('style');
+  st.textContent = Array.from(d.querySelectorAll('style'))
+    .map(function (s) { return s.textContent; }).join('\n');
+  document.head.appendChild(st);
+  document.getElementById('wrap').innerHTML = d.body.innerHTML;
+  var t = d.querySelector('title');
+  if (t) document.title = t.textContent;
+  window.scrollTo(0, 0);
+}
+async function go(c) {
+  c = (c || document.getElementById('code').value).trim();
+  if (!c) return;
+  var e = document.getElementById('err');
+  if (e) e.textContent = '';
+  var h = await sha(c);
+  var r = await fetch('p/' + h + '.html');
+  if (!r.ok) {
+    if (e) e.textContent = '链接无效或已失效，请联系您的商务对接人';
+    return;
+  }
+  try { localStorage.setItem('bc', c); } catch (x) {}
+  render(await r.text());
+}
+function logout() {
+  try { localStorage.removeItem('bc'); } catch (x) {}
+  location.href = location.pathname;
+}
+(function () {
+  var q = new URLSearchParams(location.search).get('c');
+  if (q) { go(q.toUpperCase()); return; }   /* 专属链接：点开直接进 */
+  var c = null;
+  try { c = localStorage.getItem('bc'); } catch (x) {}
+  if (c) go(c);                              /* 裸链接：上次输过则自动进 */
+})();
+</script>
+</body></html>

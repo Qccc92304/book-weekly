@@ -1,3 +1,11 @@
 .workbuddy/
 __pycache__/
 *.pyc
+# 对外仓库只放「门户 index.html + p/ 下的哈希页」，其余一概不入库
+*.py
+*.js
+*.json
+*.md
+board/
+访问码.md
+_codes.json
