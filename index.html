@@ -22,7 +22,7 @@ button:hover{background:#3b4453}
 .err{color:#c0392b;font-size:12.5px;margin-top:12px;min-height:18px}
 .tip{font-size:11.5px;color:#b3b9c2;margin-top:26px;line-height:1.7}
 #box{display:none}
-#box .wrap{max-width:1180px;margin:0 auto;text-align:left}
+#box .wrap{max-width:1620px;margin:0 auto;text-align:left}
 .bar{position:fixed;top:0;left:0;right:0;height:38px;background:#fff;
  border-bottom:1px solid #eef0f3;display:flex;align-items:center;
  justify-content:flex-end;padding:0 16px;z-index:9}
@@ -60,10 +60,11 @@ function render(txt) {
   document.body.style.alignItems = '';
   document.body.style.justifyContent = '';
   document.body.style.minHeight = '';
-  document.body.style.padding = '38px 20px 56px';
+  document.body.style.padding = '24px 32px 40px';
   var box = document.getElementById('box');
   box.style.display = 'block';
   box.style.width = '100%';
+  box.style.maxWidth = 'none';
   var st = document.createElement('style');
   st.textContent = Array.from(d.querySelectorAll('style'))
     .map(function (s) { return s.textContent; }).join('\n');
