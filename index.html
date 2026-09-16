@@ -54,8 +54,16 @@ async function sha(s) {
 function render(txt) {
   var d = new DOMParser().parseFromString(txt, 'text/html');
   document.getElementById('gate').style.display = 'none';
+  /* 门户壳用的是 flex 居中布局，直接塞进去内容会被压成「窄版」。
+     渲染目标页时还原成看板原本的 block 布局 + 内边距 */
+  document.body.style.display = 'block';
+  document.body.style.alignItems = '';
+  document.body.style.justifyContent = '';
+  document.body.style.minHeight = '';
+  document.body.style.padding = '38px 20px 56px';
   var box = document.getElementById('box');
   box.style.display = 'block';
+  box.style.width = '100%';
   var st = document.createElement('style');
   st.textContent = Array.from(d.querySelectorAll('style'))
     .map(function (s) { return s.textContent; }).join('\n');
